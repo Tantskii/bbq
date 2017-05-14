@@ -9,6 +9,8 @@ gem 'rails', '~> 5.0.2'
 
 gem 'uglifier', '>= 1.3.0'
 
+gem 'twitter-bootstrap-rails'
+
 gem 'jquery-rails'
 
 group :development, :test do
