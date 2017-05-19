@@ -1,0 +1,26 @@
+ru:
+  activerecord:
+    models:
+      user: 'Пользователь'
+      event: 'Событие'
+    attributes:
+      user:
+        email: 'Email'
+        name: 'Имя'
+        password: 'Пароль'
+        password_confirmation: 'Подтверждение пароля'
+      event:
+        title: 'Название'
+        address: 'Место проведения'
+        datetime: 'Дата и время'
+        description: 'Описание'
+  controllers:
+    events:
+      created: 'Мероприятие успешно создано'
+      updated: 'Мероприятие успешно обновлено'
+      destroyed: 'Мероприятие удалено'
+    users:
+      updated: 'Профиль обновлен'
+  app:
+    name: 'Барбекю'
+    company: 'Моя компания'
