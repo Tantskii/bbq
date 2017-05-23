@@ -2,24 +2,17 @@ class SubscriptionsController < ApplicationController
   before_action :set_event, only: [:create, :destroy]
   before_action :set_subscription, only: [:destroy]
 
+  before_action :redirect_if_user_is_creater, only: [:create]
+  before_action :redirect_if_email_exist_in_bd, only: [:create]
+
   def create
-    if @event.user != current_user
-      email = subscription_params[:user_email]
+    @new_subscription      = @event.subscriptions.build(subscription_params)
+    @new_subscription.user = current_user
 
-      if current_user == nil && email_exist_in_db?(email)
-        redirect_to :back, alert: I18n.t('controllers.subscriptions.error')
-      else
-        @new_subscription = @event.subscriptions.build(subscription_params)
-        @new_subscription.user = current_user
-
-        if @new_subscription.save
-          redirect_to @event, notice: I18n.t('controllers.subscriptions.created')
-        else
-          render 'events/show', alert: I18n.t('controllers.subscriptions.error')
-        end
-      end
+    if @new_subscription.save
+      redirect_to @event, notice: I18n.t('controllers.subscriptions.created')
     else
-      redirect_to :back, alert: I18n.t('controllers.subscriptions.error')
+      render 'events/show', alert: I18n.t('controllers.subscriptions.error')
     end
   end
 
@@ -53,4 +46,17 @@ class SubscriptionsController < ApplicationController
   def email_exist_in_db?(email)
     User.all.map {|em| em[:email]}.include?(email)
   end
+
+  def redirect_if_user_is_creater
+    redirect_to :back, alert: I18n.t('controllers.subscriptions.error') if @event.user == current_user
+  end
+
+  def redirect_if_email_exist_in_bd
+    email = subscription_params[:user_email]
+
+    if current_user == nil && email_exist_in_db?(email)
+      redirect_to :back, alert: I18n.t('controllers.subscriptions.error')
+    end
+  end
+
 end
