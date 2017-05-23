@@ -11,6 +11,7 @@ ru:
       user:
         email: 'Email'
         name: 'Имя'
+        avatar: 'Аватар'
         password: 'Пароль'
         password_confirmation: 'Подтверждение пароля'
       event:
@@ -35,12 +36,20 @@ ru:
       created: 'Вы подписаны на это событие'
       destroyed: 'Участник отписан'
       error: 'Подписка/отписка не сработала'
-
+    photos:
+      created: 'Вы добавили фотку к событию'
+      destroyed: 'Вы удалили фотку'
+      error: 'Что-то не так с фотографией'
 
   # Перевод названия приложения и компании-разработчика
   app:
     name: 'Шашлыки'
     company: 'Хороший программист'
+
+  errors:
+    one: '%{count} ошибка'
+    few: '%{count} ошибки'
+    many: '%{count} ошибок'
 
   comments:
     comment:
@@ -49,3 +58,5 @@ ru:
   subscriptions:
     subscription:
       destroy_confirm: 'Вы уверены, что хотите удалить эту подписку?'
+
+  are_you_sure_event: 'Вы уверены, что хотите удалить событие?'

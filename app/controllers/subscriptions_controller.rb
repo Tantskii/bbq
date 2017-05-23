@@ -3,13 +3,23 @@ class SubscriptionsController < ApplicationController
   before_action :set_subscription, only: [:destroy]
 
   def create
-    @new_subscription      = @event.subscriptions.build(subscription_params)
-    @new_subscription.user = current_user
+    if @event.user != current_user
+      email = subscription_params[:user_email]
 
-    if @new_subscription.save
-      redirect_to @event, notice: I18n.t('controllers.subscriptions.created')
+      if current_user == nil && email_exist_in_db?(email)
+        redirect_to :back, alert: I18n.t('controllers.subscriptions.error')
+      else
+        @new_subscription = @event.subscriptions.build(subscription_params)
+        @new_subscription.user = current_user
+
+        if @new_subscription.save
+          redirect_to @event, notice: I18n.t('controllers.subscriptions.created')
+        else
+          render 'events/show', alert: I18n.t('controllers.subscriptions.error')
+        end
+      end
     else
-      render 'events/show', alert: I18n.t('controllers.subscriptions.error')
+      redirect_to :back, alert: I18n.t('controllers.subscriptions.error')
     end
   end
 
@@ -38,5 +48,9 @@ class SubscriptionsController < ApplicationController
   # Only allow a trusted parameter "white list" through.
   def subscription_params
     params.fetch(:subscription, {}).permit(:user_email, :user_name)
+  end
+
+  def email_exist_in_db?(email)
+    User.all.map {|em| em[:email]}.include?(email)
   end
 end

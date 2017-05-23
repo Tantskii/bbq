@@ -8,11 +8,13 @@ class User < ApplicationRecord
   has_many :comments
   has_many :subscriptions
 
+  validates :name, presence: true, length: {maximum: 35}
+
   before_validation :set_name, on: :create
 
   after_commit :link_subscriptions, on: :create
 
-  validates :name, presence: true, length: {maximum: 35}
+  mount_uploader :avatar, AvatarUploader
 
   private
 
