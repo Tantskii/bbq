@@ -3,7 +3,7 @@ class SubscriptionsController < ApplicationController
   before_action :set_subscription, only: [:destroy]
 
   before_action :redirect_if_user_is_creater, only: [:create]
-  before_action :redirect_if_email_exist_in_bd, only: [:create]
+  # before_action :redirect_if_email_exist_in_bd, only: [:create]
 
   def create
     @new_subscription      = @event.subscriptions.build(subscription_params)
