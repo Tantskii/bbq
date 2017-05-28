@@ -28,6 +28,7 @@ ru:
         photo: 'Фотография'
       subscription:
         user_email: 'Почта'
+        user_name: 'Никнейм'
 
   # Перевод сообщений, которые отправляет контроллер
   controllers:
