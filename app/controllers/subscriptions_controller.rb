@@ -3,7 +3,6 @@ class SubscriptionsController < ApplicationController
   before_action :set_subscription, only: [:destroy]
 
   before_action :redirect_if_user_is_creater, only: [:create]
-  # before_action :redirect_if_email_exist_in_bd, only: [:create]
 
   def create
     @new_subscription      = @event.subscriptions.build(subscription_params)
@@ -44,20 +43,7 @@ class SubscriptionsController < ApplicationController
     params.fetch(:subscription, {}).permit(:user_email, :user_name)
   end
 
-  def email_exist_in_db?(email)
-    User.all.map {|em| em[:email]}.include?(email)
-  end
-
   def redirect_if_user_is_creater
     redirect_to :back, alert: I18n.t('controllers.subscriptions.error') if @event.user == current_user
   end
-
-  def redirect_if_email_exist_in_bd
-    email = subscription_params[:user_email]
-
-    if current_user == nil && email_exist_in_db?(email)
-      redirect_to :back, alert: I18n.t('controllers.subscriptions.error')
-    end
-  end
-
 end

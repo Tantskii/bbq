@@ -30,6 +30,6 @@ class Subscription < ApplicationRecord
   end
 
   def user_email_shouldnot_exist_in_db
-    errors.add(:user_email, 'should not exist in db') if User.find_by_email(:user_email)
+    errors.add(:user_email, 'should not exist in db') if User.find_by_email(self.user_email)
   end
 end
