@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:destroy]
 
   def create
-    @new_comment = @event.comments.build(comment_params)
+    @new_comment      = @event.comments.build(comment_params)
     @new_comment.user = current_user
 
     if @new_comment.save
@@ -41,7 +41,10 @@ class CommentsController < ApplicationController
   end
 
   def notify_subscribers(event, comment)
-    all_emails = (event.subscriptions.map(&:user_email) + [event.user.email]).uniq
+    all_emails = (event.subscriptions.map(&:user_email) +
+        [event.user.email]).uniq
+
+    all_emails.delete(comment.user.email) if comment.user
 
     all_emails.each do |mail|
       EventMailer.comment(event, comment, mail).deliver_now

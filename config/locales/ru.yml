@@ -86,5 +86,12 @@ ru:
       event: 'Событие'
       datetime: 'Состоится'
       owner: 'Оргаизатор'
+    photo:
+      title: 'Новое фото'
+      name: 'Имя'
+      email: 'Email'
+      author: 'Автор'
+      event: 'Событие'
+      owner: 'Организатор'
 
   are_you_sure_event: 'Вы уверены, что хотите удалить событие?'
