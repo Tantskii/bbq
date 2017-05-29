@@ -2,7 +2,8 @@ ru:
   # Перевод моделей
   activerecord:
     errors:
-      existion_error: 'уже существует в базе данных'
+      messages:
+        existion_error: 'уже существует в базе данных'
     # Перевод названия моделей
     models:
       user: 'Пользователь'

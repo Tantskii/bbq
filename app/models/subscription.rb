@@ -30,6 +30,6 @@ class Subscription < ApplicationRecord
   end
 
   def user_does_not_exist
-    errors.add(:user_email, I18n.t('activerecord.errors.existion_error')) if User.find_by_email(self.user_email)
+    errors.add(:user_email, :existion_error) if User.find_by_email(self.user_email)
   end
 end
