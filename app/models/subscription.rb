@@ -11,7 +11,7 @@ class Subscription < ApplicationRecord
   validates :user, uniqueness: {scope: :event_id}, if: 'user.present?'
   validates :user_email, uniqueness: {scope: :event_id}, unless: 'user.present?'
 
-  validate :user_email_shouldnot_exist_in_db, unless: 'user.present?', on: :create
+  validate :user_does_not_exist, unless: 'user.present?', on: :create
 
   def user_name
     if user.present?
@@ -29,7 +29,7 @@ class Subscription < ApplicationRecord
     end
   end
 
-  def user_email_shouldnot_exist_in_db
-    errors.add(:user_email, I18n.t('controllers.subscriptions.existion_error')) if User.find_by_email(self.user_email)
+  def user_does_not_exist
+    errors.add(:user_email, I18n.t('activerecord.errors.existion_error')) if User.find_by_email(self.user_email)
   end
 end
