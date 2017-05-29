@@ -9,6 +9,8 @@
 
   <%= stylesheet_link_tag "application", :media => "all" %>
 
+  <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+
   <!-- For third-generation iPad with high-resolution Retina display: -->
   <!-- Size should be 144 x 144 pixels -->
   <%= favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144' %>
@@ -40,7 +42,6 @@
 <body>
   <div class="navbar navbar-default navbar-static-top">
     <div class="container">
-      <%# Для вывода названия приложения используем хелпер I18n.t %>
       <%= link_to t('app.name'), root_path, class: 'navbar-brand' %>
 
       <div class="navbar-collapse collapse navbar-responsive-collapse">
