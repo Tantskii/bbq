@@ -29,6 +29,9 @@ ru:
       subscription:
         user_email: 'Почта'
         user_name: 'Никнейм'
+      comment:
+        user_name: 'Никнейм'
+        body: 'Комментарий'
 
   # Перевод сообщений, которые отправляет контроллер
   controllers:
@@ -37,12 +40,14 @@ ru:
       updated: 'Вы обновили мероприятие'
       destroyed: 'Вы удалили мероприятие'
       wrong_pincode: 'Неверный пинкод'
+
     users:
       updated: 'Вы обновили свой профиль'
     comments:
       destroyed: 'Комментарий удален'
       created: 'Ваш комментарий добавлен'
       error: 'Ошибка с комментарием'
+
     subscriptions:
       created: 'Вы подписаны на это событие'
       destroyed: 'Участник отписан'
@@ -66,7 +71,6 @@ ru:
   comments:
     comment:
       destroy_confirm: 'Вы уверены, что хотите удалить этот комменатрий?'
-
   subscriptions:
     subscription:
       destroy_confirm: 'Вы уверены, что хотите удалить эту подписку?'
