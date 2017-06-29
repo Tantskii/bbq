@@ -1,24 +1,12 @@
-# README
+# Приложение для организации встреч
+Позволяет создать событие и пригласить на него друзей. 
+Поддерживает возможность рассылки писем п с информацией о новых участниках и загруженных фотографиях.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Ссылка на приложение на heroku
+https://bbqmeeting.herokuapp.com/
 
-Things you may want to cover:
+# Установка
+Склонируйте данный гит репозиторий и залейте на heroku. 
+В файле `poduction.rb` вместо указанной выше ссылке напишите свою
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Также для работы почты на хероку бует необходимо установить SendGrid
